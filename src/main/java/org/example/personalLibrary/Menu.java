@@ -28,6 +28,7 @@ public class Menu {
                    break;
                 case 2:
                     System.out.println("Actualizar libro");
+                    LibreriaService.updateBook();
                     break;
 
                case 3:
@@ -36,6 +37,7 @@ public class Menu {
                    break;
                case 4:
                    System.out.println("Eliminar libro");
+                   LibreriaService.deleteBook();
                    break;
 
                case 5:

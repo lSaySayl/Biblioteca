@@ -93,4 +93,37 @@ public interface LibreriaDAO {
         }
 
     }
+
+    public static void updateBookDB (LibreariaModel libMo) {
+        Conexion data_connect = new Conexion();
+
+            try (Connection conexion = data_connect.get_connection()) {
+                PreparedStatement preparedStatement = null;
+
+                try {
+                    String query = "UPDATE libro SET bookname = ?, author = ?, isbn = ?, pages = ?, category = ? WHERE id_book = ?";
+                    preparedStatement = conexion.prepareStatement(query);
+                    preparedStatement.setString(1, libMo.getBookName());
+                    preparedStatement.setString(2, libMo.getAuthor());
+                    preparedStatement.setString(3, libMo.getIsbn());
+                    preparedStatement.setInt(4, libMo.getPages());
+                    preparedStatement.setString(5, libMo.getCategory());
+                    preparedStatement.setInt(6, libMo.getId_book());
+                    preparedStatement.executeUpdate();
+
+
+                    System.out.println("Libro actualizado correctamente");
+
+                } catch (SQLException e) {
+                    System.out.println(e);
+                }
+
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+                //Capturando el error
+            }
+
+    }
+
+
 }

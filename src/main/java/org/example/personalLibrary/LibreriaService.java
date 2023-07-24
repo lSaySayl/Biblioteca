@@ -45,4 +45,36 @@ public class LibreriaService {
         LibreriaDAO.deleteBookDB(id_book);
     }
 
+    public static void updateBook () {
+        System.out.println("Ingrese el nombre del libro a actualizar");
+        String bookName = sc.nextLine();
+
+        System.out.println("Ingrese el nombre a actualizar");
+        String author = sc.nextLine();
+
+        System.out.println("Ingrese el ISBN a actualizar");
+        String isbn = sc.nextLine();
+
+        System.out.println("Ingrese el número de páginas a actualizar");
+        int pages = sc.nextInt();
+
+        System.out.println("Ingrese la categoría a actualizar");
+        String category = sc.next();
+
+        System.out.println("Ingrese el id del libro a actualizar");
+        int id_book = sc.nextInt();
+
+        LibreariaModel updateBook = new LibreariaModel();
+
+        updateBook.setBookName(bookName);
+        updateBook.setAuthor(author);
+        updateBook.setIsbn(isbn);
+        updateBook.setPages(pages);
+        updateBook.setCategory(category);
+        updateBook.setId_book(id_book);
+
+        LibreriaDAO.updateBookDB(updateBook);
+
+    }
+
 }
